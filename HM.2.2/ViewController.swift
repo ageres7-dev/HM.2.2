@@ -19,9 +19,9 @@ class ViewController: UIViewController {
     @IBOutlet var greenValueLabel: UILabel!
     @IBOutlet var blueValueLabel: UILabel!
     
-    private var currentRedValue: CGFloat = 0.25
-    private var currentGreenValue: CGFloat = 0.55
-    private var currentBlueValue: CGFloat = 0.85
+    private var currentRedValue = CGFloat.random(in: 0...1)
+    private var currentGreenValue = CGFloat.random(in: 0...1)
+    private var currentBlueValue = CGFloat.random(in: 0...1)
     
     private var currentColor = UIColor()
     
