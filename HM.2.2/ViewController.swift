@@ -19,45 +19,53 @@ class ViewController: UIViewController {
     @IBOutlet var greenValueLabel: UILabel!
     @IBOutlet var blueValueLabel: UILabel!
     
-    
-    private var currentRedValue: CGFloat = 0.50
-    private var currentGreenValue: CGFloat = 0.50
-    private var currentBlueValue: CGFloat = 0.50
+    private var currentRedValue: CGFloat = 0.25
+    private var currentGreenValue: CGFloat = 0.55
+    private var currentBlueValue: CGFloat = 0.85
     
     private var currentColor = UIColor()
     
-//    private let currentColor = UIColor(displayP3Red: 50, green: 0.50, blue: 0.50, alpha: 1)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        currentColor = UIColor(displayP3Red: currentRedValue, green: currentGreenValue, blue: currentBlueValue, alpha: 1)
-        
+   
         colorView.layer.cornerRadius = 15
-        colorView.backgroundColor = currentColor
-    
+        setColorToColorView()
+        setValueToSliders()
+        setValueToLabels()
     }
 
     @IBAction func redSliderAction() {
         currentRedValue = CGFloat(redSlider.value)
         redValueLabel.text = String(format: "%.2f", redSlider.value)
-        
-        setColor()
+        setColorToColorView()
     }
     @IBAction func greenSliderAction() {
         currentGreenValue = CGFloat(greenSlider.value)
         greenValueLabel.text = String(format: "%.2f", greenSlider.value)
-        setColor()
+        setColorToColorView()
     }
     @IBAction func blueSliderAction() {
         currentBlueValue = CGFloat(blueSlider.value)
         blueValueLabel.text = String(format: "%.2f", blueSlider.value)
-        setColor()
+        setColorToColorView()
     }
     
-    func setColor() {
+    private func setColorToColorView() {
         currentColor = UIColor(displayP3Red: currentRedValue, green: currentGreenValue, blue: currentBlueValue, alpha: 1)
         colorView.backgroundColor = currentColor
     }
+    
+    private func setValueToSliders() {
+        redSlider.value = Float(currentRedValue)
+        greenSlider.value = Float(currentGreenValue)
+        blueSlider.value = Float(currentBlueValue)
+    }
+    
+    private func setValueToLabels() {
+        redValueLabel.text = String(format: "%.2f", currentRedValue)
+        greenValueLabel.text = String(format: "%.2f", currentGreenValue)
+        blueValueLabel.text = String(format: "%.2f", currentBlueValue)
+    }
+
 }
 
