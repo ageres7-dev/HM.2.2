@@ -23,8 +23,6 @@ class ViewController: UIViewController {
     private var currentGreenValue = CGFloat.random(in: 0...1)
     private var currentBlueValue = CGFloat.random(in: 0...1)
     
-    private var currentColor = UIColor()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
    
@@ -51,7 +49,12 @@ class ViewController: UIViewController {
     }
     
     private func setColorToColorView() {
-        currentColor = UIColor(displayP3Red: currentRedValue, green: currentGreenValue, blue: currentBlueValue, alpha: 1)
+        let currentColor = UIColor(
+            displayP3Red: currentRedValue,
+            green: currentGreenValue,
+            blue: currentBlueValue,
+            alpha: 1
+        )
         colorView.backgroundColor = currentColor
     }
     
